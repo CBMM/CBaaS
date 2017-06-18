@@ -1,7 +1,6 @@
 { reflex-platform, ... }:
 let
-  nixpkgs = (import <nixpkgs> {});
-  dontCheck = (import <nixpkgs> {}).pkgs.haskell.lib.dontCheck;
+  dontCheck = reflex-platform.lib.dontCheck;
   cabal2nixResult = reflex-platform.cabal2nixResult;
 in
 reflex-platform.ghc.override {

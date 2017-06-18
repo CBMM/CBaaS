@@ -1,8 +1,7 @@
 { reflex-platform, ... }:
 let
 
-  nixpkgs = (import <nixpkgs> {});
-  dontCheck = nixpkgs.pkgs.haskell.lib.dontCheck;
+  dontCheck = reflex-platform.lib.dontCheck;
   cabal2nixResult = reflex-platform.cabal2nixResult;
 in
 reflex-platform.ghcjs.override {
@@ -18,7 +17,7 @@ reflex-platform.ghcjs.override {
      servant-js        = dontCheck (self.callPackage (cabal2nixResult ../deps/servant/servant-js) {  });
      servant-foreign        = dontCheck (self.callPackage (cabal2nixResult ../deps/servant/servant-foreign) {  });
      servant-docs        = dontCheck (self.callPackage (cabal2nixResult ../deps/servant/servant-docs) {  });
-     # reflex-dom-semui    = dontCheck (self.callPackage (cabal2nixResult ../deps/reflex-dom-semui){});
-     reflex-dom-semui    = dontCheck (self.callPackage (cabal2nixResult ../../reflex-dom-semui){});
+     reflex-dom-semui    = dontCheck (self.callPackage (cabal2nixResult ../deps/reflex-dom-semui){});
+     # reflex-dom-semui    = dontCheck (self.callPackage (cabal2nixResult ../../reflex-dom-semui){});
   };
 }
